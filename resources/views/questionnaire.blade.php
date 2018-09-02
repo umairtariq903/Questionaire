@@ -36,14 +36,15 @@
                                 
                                 <td><a href="{{url('/edit/'.$quest['id'])}}"  class="btn btn-warning">Edit</a></td>
                                 <td>
-                                  <form  method="post">
+                                  <form  action="{{url('/destroy')}}" method="post">
                                     @csrf
-                                    <input name="_method" type="hidden" value="DELETE">
+                                    <input name="id" type="hidden" value="{{$quest['id']}}">
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                   </form>
                                 </td>
                               </tr>
                               @endforeach
+                              <tr><a href="{{url('/Questionnaire/create')}}"  class="btn btn-primary">Add Questionnaire</a></tr>
                         </tbody>
                     </table>
                 </div>

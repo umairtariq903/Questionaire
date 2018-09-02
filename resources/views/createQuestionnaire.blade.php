@@ -29,7 +29,7 @@
                             <label for="duration" class="col-md-4 col-form-label text-md-right">{{ __('Duration') }}</label>
 
                             <div class="col-md-6">
-                                <input id="duration" type="number" class="form-control duration" name="duration" required>
+                                <input id="duration" type="text" class="form-control duration" name="duration" required autofocus>
 
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                     <label class="form-check-label" for="resumable">
                                         {{ __('Resumable') }}
                                     </label>
-                                    <input type="radio" name="resumable" value="yes"> Yes
+                                    <input type="radio" name="resumable" value="yes" required autofocus> Yes
                                     <input type="radio" name="resumable" value="no"> No<br>
                                     
                                     
@@ -63,7 +63,7 @@
         </div>
     </div>
 </div>
-<!-- script type="text/javascript">$(document).ready(function() {
-    $("#duration").timingfield();
-});</script>> -->
+<script type="text/javascript">$(document).ready(function() {
+    $("#duration").durationPicker();
+});</script>
 @endsection

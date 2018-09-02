@@ -16,7 +16,7 @@
 
                     <form method="POST" action="{{ url('/Questionnaire/update') }}" aria-label="{{ __('Create') }}">
                         @csrf
-                        <input name="id" type="hidden" value="$id">
+                        <input name="id" type="hidden" value="{{$editid}}">
                         <div class="form-group row">
                             <label for="Questionnaire" class="col-sm-4 col-form-label text-md-right">{{ __('Questionnaire') }}</label>
 
@@ -29,7 +29,7 @@
                             <label for="duration" class="col-md-4 col-form-label text-md-right">{{ __('Duration') }}</label>
 
                             <div class="col-md-6">
-                                <input id="duration" type="number" class="form-control duration" name="duration" value="{{$questionnaires->duration}}" required>
+                                <input id="duration" type="text" class="form-control duration" name="duration" value="{{$questionnaires->duration}}" required>
 
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                         {{ __('Resumable') }}
                                     </label>
 
-                                    <input type="radio" name="resumable" value="yes" @if($questionnaires->resumable =="yes") checked @endif > Yes
+                                    <input type="radio" name="resumable" value="yes" @if($questionnaires->resumable =="yes") checked @endif required autofocus> Yes
                                     <input type="radio" name="resumable" value="no" @if($questionnaires->resumable =="no") checked @endif> No<br>
                                     
                                     
@@ -64,7 +64,7 @@
         </div>
     </div>
 </div>
-<!-- <script type="text/javascript">$(document).ready(function() {
-    $("#duration").timingfield();
-});</script> -->
+<script type="text/javascript">$(document).ready(function() {
+    $("#duration").durationPicker();
+});</script>
 @endsection

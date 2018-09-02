@@ -14,8 +14,9 @@
 
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('plugin/duration-picker.js') }}"></script>
     <!-- <script src="https://code.jquery.com/jquery.min.js"></script> -->
     <!-- <script src="{{ asset('js/timingfield.js') }}"></script> -->
 
@@ -32,6 +33,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugin/duration-picker.css') }}" rel="stylesheet">
     <!-- <link href="{{ asset('css/timingfield.css') }}timingfield.css" rel="stylesheet"> -->
 
 

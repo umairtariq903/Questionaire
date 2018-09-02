@@ -25,5 +25,6 @@ Route::get('/addquestion/{id}', 'questionnaire@getquestion');
 Route::post('/addquestion', 'questionnaire@postquestion');
 Route::get('/edit/{id}','questionnaire@edit');
 Route::post('/Questionnaire/update','questionnaire@update');
+Route::post('/destroy', 'questionnaire@destroy');
 
 

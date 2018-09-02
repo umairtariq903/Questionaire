@@ -17,7 +17,7 @@ class CreateQuestionnaireTable extends Migration
             $table->increments('id');
             $table->string('questionnairename');
             $table->integer('user_id');
-            $table->integer('duration');
+            $table->string('duration');
             $table->string('resumable');
             $table->timestamps();
         });

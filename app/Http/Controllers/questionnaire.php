@@ -73,6 +73,9 @@ class questionnaire extends Controller
         $choice3=$request->get('choice3');
         $correct=$request->get('correct');
 
+        // var_dump($correct);
+        // exit();
+
 
         for ($i=0; $i<count($questiontype) ; $i++) { 
         	$questionmodel= new \App\question;
@@ -115,16 +118,31 @@ class questionnaire extends Controller
     public function edit($id)
     {
     	$questionnairemodel=new questionnairemodel();
+    	$editid=$id;
     	$questionnaires=$questionnairemodel::find($id);
-    	return view('edit',compact('questionnaires','id'));
+    	return view('edit',compact('questionnaires','editid'));
 
     }
     public function destroy(Request $request)
     {
+    	$id=$request->get('id');
+    	$questionnaire=new questionnairemodel();
+    	$deleterecord=$questionnaire::find($id);
+    	$deleterecord->delete();
+    	return redirect('/Questionnaire');
     	
     }
     public function update(Request $request)
     {
-    	
+    	$id=$request->get('id');
+    	// var_dump($id);
+    	// exit();
+    	$questionnaire=new questionnairemodel();
+    	$editrecord=$questionnaire::find($id);
+    	$editrecord->questionnairename=$request->get('questionnaire');
+    	$editrecord->duration=$request->get('duration');
+    	$editrecord->resumable=$request->get('resumable');
+    	$editrecord->save();
+    	return redirect('/Questionnaire');
     }
 }

@@ -22,9 +22,10 @@
                                 <label for="type" class="col-sm-4 col-form-label text-md-right">{{ __('Question Type') }}</label>
 
                                 <div class="col-md-6" name="test">
-                                    <select name="questiontype[]" class="form-group" onchange="changevalue(event);">
-                                      <option>Select Type</option>
-                                      <option value="mcq">Multiple Choice Qquestion</option>
+                                    <select name="questiontype[]" class="form-group" required autofocus onchange="changevalue(event);" >
+                                      <option value="">Select Type</option>
+                                      <option value="mcq">Multiple Choice Question(Single option)</option>
+                                      <!-- <option value="mcq2">Multiple Choice Question(Multiple option)</option> -->
                                       <option value="text">Text</option> 
                                     </select>
                                     <a href="#" class="col-md-8" onclick="deletequestion(event);">Delete Question</a>
@@ -79,8 +80,14 @@
         if(questiontype=="mcq")
         {
             // parent.empty();
-            siblings.innerHTML='<div class="form-group row"><label for="Question" class="col-sm-4 col-form-label text-md-right">{{ __("Question") }}</label><div class="col-md-12"><input  type="text" class="form-control questions" name="question[]" value="" required autofocus></div></div><div class="form-group row"><label for="Choice1" class="col-sm-4 col-form-label text-md-right">{{ __("Choice1") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice1[]" value="" required autofocus><input type="radio" name="correct[]" value="1">Correct<a href="#" class="col-md-8" onclick="deletechoice(event);">Delete Choice</a></div></div><div class="form-group row"><label for="Choice2" class="col-sm-4 col-form-label text-md-right">{{ __("Choice2") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice2[]" value="" required autofocus><input type="radio" name="correct[]" value="1">Correct<a href="#" class="col-md-8" onclick="deletechoice(event);">Delete Choice</a></div></div><div class="form-group row"><label for="Choice3" class="col-sm-4 col-form-label text-md-right">{{ __("Choice3") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice3[]" value="" required autofocus><input type="radio" name="correct[]" value="1">Correct<a href="#" class="col-md-8" onclick="deletechoice(event);">Delete Choice</a></div></div>';
+            siblings.innerHTML='<div class="form-group row"><label for="Question" class="col-sm-4 col-form-label text-md-right">{{ __("Question") }}</label><div class="col-md-12"><input  type="text" class="form-control questions" name="question[]" value="" required autofocus></div></div><div class="form-group row"><label for="Choice1" class="col-sm-4 col-form-label text-md-right">{{ __("Choice1") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice1[]" value="" required autofocus><input type="radio" name="correct[]" value="1" required autofocus>Correct</div></div><div class="form-group row"><label for="Choice2" class="col-sm-4 col-form-label text-md-right">{{ __("Choice2") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice2[]" value="" required autofocus><input type="radio" name="correct[]" value="2">Correct</div></div><div class="form-group row"><label for="Choice3" class="col-sm-4 col-form-label text-md-right">{{ __("Choice3") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice3[]" value="" required autofocus><input type="radio" name="correct[]" value="3">Correct</div></div>';
         }
+
+        // if(questiontype=="mcq2")
+        // {
+        //     // parent.empty();
+        //     siblings.innerHTML='<div class="form-group row"><label for="Question" class="col-sm-4 col-form-label text-md-right">{{ __("Question") }}</label><div class="col-md-12"><input  type="text" class="form-control questions" name="question[]" value="" required autofocus></div></div><div class="form-group row"><label for="Choice1" class="col-sm-4 col-form-label text-md-right">{{ __("Choice1") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice1[]" value="" required autofocus><input type="checkbox" name="correct[][]" value="1" required autofocus>Correct</div></div><div class="form-group row"><label for="Choice2" class="col-sm-4 col-form-label text-md-right">{{ __("Choice2") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice2[]" value="" required autofocus><input type="checkbox" name="correct[][]" value="2" required autofocus>Correct</div></div><div class="form-group row"><label for="Choice3" class="col-sm-4 col-form-label text-md-right">{{ __("Choice3") }}</label><div class="col-md-12"><input  type="text" class="form-control" name="choice3[]" value="" required autofocus><input type="checkbox" name="correct[][]" value="3" required autofocus>Correct</div></div>';
+        // }
         
 
     }
@@ -88,7 +95,7 @@
     {
         
         // $("#custom").append('hello');
-        $("#custom").append('<div class="form-group row"><label for="type" class="col-sm-4 col-form-label text-md-right">{{__("QuestionType") }}</label><div class="col-md-6"><select  name="questiontype[]" class="form-group" onchange="changevalue();"><option>Select Type</option><option value="mcq">Multiple Choice Qquestion</option><option value="text">Text</option> </select><a href="#" class="col-md-8" onclick="deletequestion(event);">Delete Question</a></div><div></div></div>');
+        $("#custom").append('<div class="form-group row"><label for="type" class="col-sm-4 col-form-label text-md-right">{{__("QuestionType") }}</label><div class="col-md-6"><select  name="questiontype[]" class="form-group" onchange="changevalue();" required autofocus><option value="">Select Type</option><option value="mcq">Multiple Choice Qquestion</option><option value="text">Text</option> </select><a href="#" class="col-md-8" onclick="deletequestion(event);">Delete Question</a></div><div></div></div>');
         
     }
     function deletequestion(e)
@@ -103,7 +110,8 @@
         e = e || window.event;
         var target = e.target || e.srcElement;
         var parent = e.target.parentNode.parentNode;
-        parent.remove(parent);
+        //parent.remove(parent);
+        parent.disabled = true;
     }
     function submitdata()
     {
